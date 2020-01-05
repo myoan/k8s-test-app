@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    run: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: app
+  template:
+    metadata:
+      labels:
+        run: app
+    spec:
+      containers: 
+      - name: app
+        image: simple-app:0.0.2
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 1
+            memory: 20Mi
+          requests:
+            cpu: 0.5
+            memory: 10Mi
+        ports:
+          - containerPort: 8080
+        env:
+          - name: DB_HOST
+            value: db:3306
+          - name: DB_USERNAME
+            value: root
+          - name: DB_PASSWORD
+            value: password
+          - name: DB_DBNAME
+            value: app
