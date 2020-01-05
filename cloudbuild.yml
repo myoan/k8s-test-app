@@ -5,3 +5,5 @@ steps:
   args: ['tag', 'asia.gcr.io/lp-test-263613/k8s-test-app:$REVISION_ID', 'asia.gcr.io/lp-test-263613/k8s-test-app:latest']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia.gcr.io/lp-test-263613/k8s-test-app:$REVISION_ID']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia.gcr.io/lp-test-263613/k8s-test-app:latest']
