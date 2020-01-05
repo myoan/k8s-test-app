@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
       - name: app
-        image: asia.gcr.io/fit-ietochi/simple-app
+        image: asia.gcr.io/lp-test-263613/k8s-test-app
         resources:
           limits:
             cpu: 0.5
@@ -26,18 +26,3 @@ spec:
             memory: 20Mi
         ports:
           - containerPort: 8080
-        env:
-          - name: DB_HOST
-            value: 10.32.0.3:3306
-          - name: DB_DBNAME
-            value: fit-development
-          - name: DB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: db-secret
-                key: username
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: db-secret
-                key: password
